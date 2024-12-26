@@ -1,9 +1,17 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useEffect,useState } from 'react';
 import axios from 'axios';
 
+{/* Fetch the data from backend to front end */}
+const baseUrl = 'http://127.0.0.1:8000/api';
 function PopularLecturers() {
+  const [lecturer,setLecturer] = useState(null);
+  useEffect(() =>{
+      axios.get(baseUrl+ '/lecturer/').then((response) =>{
+        setLecturer(response.data);
+      });
+    },[]);
+    console.log(lecturer);
   return (
     <div className="container mt-3">
      {/* Popular Courses */}
@@ -140,12 +148,12 @@ function PopularLecturers() {
       {/* End popular courses */} 
       {/* pagination*/}
    <nav aria-label="Page navigation example">
-<ul class="pagination">
-  <li class="page-item"><a class="page-link" href="https://example.com">Previous</a></li>
-  <li class="page-item"><a class="page-link" href="https://example.com">1</a></li>
-  <li class="page-item"><a class="page-link" href="https://example.com">2</a></li>
-  <li class="page-item"><a class="page-link" href="https://example.com">3</a></li>
-  <li class="page-item"><a class="page-link" href="https://example.com">Next</a></li>
+<ul className="pagination">
+  <li className="page-item"><a className="page-link" href="https://example.com">Previous</a></li>
+  <li className="page-item"><a className="page-link" href="https://example.com">1</a></li>
+  <li className="page-item"><a className="page-link" href="https://example.com">2</a></li>
+  <li className="page-item"><a className="page-link" href="https://example.com">3</a></li>
+  <li className="page-item"><a className="page-link" href="https://example.com">Next</a></li>
 </ul>
 </nav>
     {/* end pagination*/}

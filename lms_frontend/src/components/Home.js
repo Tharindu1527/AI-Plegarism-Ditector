@@ -56,7 +56,7 @@ function Home() {
           {/* End Latest courses */}
       </div>
       {/* Popular Courses */}
-      <h3 className="pb-1 mb-4 mt-5">Popular Courses<Link to ='./popular-courses' class="float-end">See All</Link></h3>
+      <h3 className="pb-1 mb-4 mt-5">Popular Courses<Link to ='./popular-courses' className="float-end">See All</Link></h3>
         <div className="row">
           <div className="col-md-3">
             <div className="card">
@@ -126,7 +126,7 @@ function Home() {
         </div>
   
         {/* Popular Lecturers */}
-        <h3 className="pb-1 mb-4 mt-5">Popular Lecturers<Link to='/popular-lecturers' class="float-end">See All</Link></h3>
+        <h3 className="pb-1 mb-4 mt-5">Popular Lecturers<Link to='/popular-lecturers' className="float-end">See All</Link></h3>
         <div className="row mb-4">
           <div className="col-md-3">
             <div className="card">
@@ -204,31 +204,31 @@ function Home() {
   </div>
   <div className="carousel-inner">
     <div className="carousel-item active">
-    <figure class="text-center">
-    <blockquote class="blockquote">
+    <figure className="text-center">
+    <blockquote className="blockquote">
     <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
-    <figcaption class="blockquote-footer">
+    <figcaption className="blockquote-footer">
     Someone famous in <cite title="Source Title">Source Title</cite>
     </figcaption>
     </figure>
     </div>
     <div className="carousel-item">
-       <figure class="text-center">
-         <blockquote class="blockquote">
+       <figure className="text-center">
+         <blockquote className="blockquote">
          <p>A well-known quote, contained in a blockquote element.</p>
          </blockquote>
-        <figcaption class="blockquote-footer">
+        <figcaption className="blockquote-footer">
          Someone famous in <cite title="Source Title">Source Title</cite>
         </figcaption>
         </figure>
     </div>
     <div className="carousel-item">
-    <figure class="text-center">
-         <blockquote class="blockquote">
+    <figure className="text-center">
+         <blockquote className="blockquote">
          <p>A well-known quote, contained in a blockquote element.</p>
          </blockquote>
-        <figcaption class="blockquote-footer">
+        <figcaption className="blockquote-footer">
          Someone famous in <cite title="Source Title">Source Title</cite>
         </figcaption>
         </figure>

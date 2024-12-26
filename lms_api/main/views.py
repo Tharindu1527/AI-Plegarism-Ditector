@@ -11,9 +11,9 @@ from . import models
 class LecturerList(generics.ListCreateAPIView):
     queryset = models.Lecturer.objects.all()
     serializer_class = LecturerSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    #permission_classes = [permissions.IsAuthenticated]
 
 class LecturerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Lecturer.objects.all()
     serializer_class = LecturerSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    #permission_classes = [permissions.IsAuthenticated]
