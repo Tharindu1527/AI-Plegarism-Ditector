@@ -20,6 +20,9 @@ class CourseCategory(models.Model):
 
     class Meta :
         verbose_name_plural = "2 . Course Categories"
+    
+    def __str__(self):
+        return self.title
 
 #Course Model
 class Course(models.Model):

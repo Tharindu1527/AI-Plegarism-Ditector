@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\SOFTWARE PROJECT\LMS PROJECT\LMS\lms_api\venv
+set VIRTUAL_ENV=C:\Users\Niran\OneDrive\Documents\new\AI-Plegarism-Ditector\lms_api\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

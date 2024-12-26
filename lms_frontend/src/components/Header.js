@@ -44,7 +44,10 @@ export default Header;*/
 import { Link } from "react-router-dom";
 
 function Header() {
-    return (
+    
+const lecturerLoginStatus = localStorage.getItem('lecturerLoginStatus')
+  
+        return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
                 <Link className="navbar-brand" to="/">Learn Online</Link>
@@ -67,9 +70,11 @@ function Header() {
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Lecturers</a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><Link className="dropdown-item" to="/lecturer-login">Login</Link></li>
-                                <li><Link className="dropdown-item" to="/lecturer-register">User Register</Link></li>
-                                <li><hr className="dropdown-divider"/></li>
+                                {lecturerLoginStatus !='true' &&
+                                <>
+                                        <li><Link className="dropdown-item" to="/lecturer-login">Login</Link></li>
+                                        <li><Link className="dropdown-item" to="/lecturer-register"> Register</Link></li></> 
+                                        }
                                 <li><Link  className="dropdown-item" to='./lecturer-dashboard'>Dashboard</Link></li>
                                 <li><Link className="dropdown-item" to='./lecturer-login'  >Logout</Link></li>
                             </ul>

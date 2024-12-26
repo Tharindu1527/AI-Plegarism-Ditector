@@ -5,6 +5,7 @@ import axios from "axios";
 const baseUrl="http://127.0.0.1:8000/api/lecturer/";
 
 function LecturerRegister(){
+    
     const [lecturerData,setlecturerData] = useState({
         "full_name": "",
         "email": "",
@@ -13,6 +14,7 @@ function LecturerRegister(){
         "department": "",
         "mobile_no": "",
         "address": "",
+        "status": ""
     });
 
     //change Element value
@@ -37,19 +39,38 @@ function LecturerRegister(){
 
         try{
             axios.post(baseUrl,lectureFormrData).then((response)=>{
-                console.log(response.data)
+                setlecturerData({
+        "full_name": "",
+        "email": "",
+        "password": "",
+        "qualification": "",
+        "department": "",
+        "mobile_no": "",
+        "address": "",
+        "status": "success",
+    });
             });
         } 
         catch(error){
             console.log(error);
+            setlecturerData({'status':"error"})
         }
     };
     //End
+    useEffect(()=>{
+        document.title='Lecturer Register'
+    });
 
+    const lecturerLoginStatus = localStorage.getItem('lecturerLoginStatus')
+     if(lecturerLoginStatus === 'true'){
+        window.location.href='/lecturer-dashboard';
+     }
     return(
      <div className="container mt-4">
          <div className="row">
              <div className="col-6 offset-3">
+             {lecturerData.status == "success" &&<p className="text-success">Thanks for Registration</p>}
+             {lecturerData.status =="error" &&<p className="text-danger">Something went wrong</p>}
                  <div className="card">
                      <h5 className="card-header">Lecturer Register</h5>
                      <div className="card-body">
@@ -60,7 +81,7 @@ function LecturerRegister(){
                          </div>
                          <div className="mb-3">
                             <label for="exampleInputEmail1" className="form-label">Email</label>
-                                <input onChange={handleChange} name="email" type="email" className="form-control"/>
+                                <input  onChange={handleChange} name="email" type="email" className="form-control"/>
                          </div>
                          <div className="mb-3">
                                 <label for="exampleInputPassword1" className="form-label">Password</label>
@@ -68,11 +89,11 @@ function LecturerRegister(){
                          </div>
                          <div className="mb-3">
                             <label for="exampleInputEmail1" className="form-label">Qualification</label>
-                                <input  onChange={handleChange} name="qualification" type="text" className="form-control"/>
+                                <input   onChange={handleChange} name="qualification" type="text" className="form-control"/>
                          </div>
                          <div className="mb-3">
                             <label for="exampleInputEmail1" className="form-label">Department</label>
-                                <input  onChange={handleChange} name="department" type="text" className="form-control"/>
+                                <input onChange={handleChange} name="department" type="text" className="form-control"/>
                          </div>
                          <div className="mb-3">
                             <label for="exampleInputEmail1" className="form-label">Mobile Number</label>
@@ -80,7 +101,7 @@ function LecturerRegister(){
                          </div>
                          <div className="mb-3">
                             <label for="exampleInputEmail1" className="form-label">Address</label>
-                            <textarea  onChange={handleChange} name="address" className="form-control"></textarea>
+                            <textarea value={lecturerData.address} onChange={handleChange} name="address" className="form-control"></textarea>
                          </div>
                          <button onClick={submitForm} type="submit" class="btn btn-primary">Register</button>
                              </form>

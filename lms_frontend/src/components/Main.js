@@ -15,9 +15,11 @@ import ChangePassword from './User/ChangePassword';
 import LecturerDetail from './Lecturer/LecturerDetail';
 //Lecturer
 import LecturerLogin from './Lecturer/LecturerLogin';
+import LecturerLogout from './Lecturer/LecturerLogout';
 import LecturerRegister from './Lecturer/LecturerRegister';
 import LecturerDashboard from './Lecturer/LecturerDashboard';
 import AddCourses from './Lecturer/AddCourse';
+import AddChapters from './Lecturer/AddChapters';
 import UserList from './Lecturer/UserList';
 import LecturerChangePassword from './Lecturer/LecturerChangePassword';
 import LecturerProfileSettings from './Lecturer/LecturerProfileSetting';
@@ -47,12 +49,14 @@ function Main() {
         <Route path="/profile-settings" element={<ProfileSettings/>}/>
         <Route path="/change-password" element={<ChangePassword/>}/>
         <Route path="/lecturer-login" element={<LecturerLogin/>}/>
+        <Route path="/lecturer-logout" element={<LecturerLogout/>}/>
         <Route path="/lecturer-register" element={<LecturerRegister/>}/>
         <Route path="/lecturer-change-password" element={<LecturerChangePassword/>}/>
         <Route path="/lecturer-dashboard" element={<LecturerDashboard/>}/>
         <Route path="/lecturer-profile-settings" element={<LecturerProfileSettings/>}/>
         <Route path="/user-list" element={<UserList/>}/>lecturer
         <Route path="/add-courses" element={<AddCourses/>}/>
+        <Route path="/add-chapters/:course_id" element={<AddChapters/>}/>
         <Route path="/lecturer-courses" element={<LecturerCourses/>}/>
         <Route path="/lecturer-detail/:lecturer_id" element={<LecturerDetail/>}/>
         <Route path="/all-courses" element={<AllCourses/>}/>
