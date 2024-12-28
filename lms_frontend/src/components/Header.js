@@ -46,6 +46,10 @@ import { Link } from "react-router-dom";
 function Header() {
     
 const lecturerLoginStatus = localStorage.getItem('lecturerLoginStatus')
+const handleLogout = () => {
+    localStorage.removeItem('lecturerLoginStatus');
+    localStorage.removeItem('lecturerId');
+    window.location.href = '/lecturer-login';}
   
         return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -70,14 +74,18 @@ const lecturerLoginStatus = localStorage.getItem('lecturerLoginStatus')
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Lecturers</a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {lecturerLoginStatus !='true' &&
-                                <>
-                                        <li><Link className="dropdown-item" to="/lecturer-login">Login</Link></li>
-                                        <li><Link className="dropdown-item" to="/lecturer-register"> Register</Link></li></> 
-                                        }
-                                <li><Link  className="dropdown-item" to='./lecturer-dashboard'>Dashboard</Link></li>
-                                <li><Link className="dropdown-item" to='./lecturer-login'  >Logout</Link></li>
-                            </ul>
+                {lecturerLoginStatus !== 'true' ? (
+                    <>
+                        <li><Link className="dropdown-item" to="/lecturer-login">Login</Link></li>
+                        <li><Link className="dropdown-item" to="/lecturer-register">Register</Link></li>
+                    </>
+                ) : (
+                    <>
+                        <li><Link className="dropdown-item" to="/lecturer-dashboard">Dashboard</Link></li>
+                        <li><button className="dropdown-item" onClick={handleLogout}>Logout</button></li>
+                    </>
+                )}
+            </ul>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

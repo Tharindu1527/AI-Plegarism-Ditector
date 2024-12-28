@@ -16,24 +16,26 @@ function LecturerLogin(){
        })
     }
 
-    const submitForm=()=>{
-        const lecturerFormData= new FormData;
-        lecturerFormData.append('email',lecturerLoginData.email)
-        lecturerFormData.append('password',lecturerLoginData.password)
-        try{
-            axios.post(baseUrl+ '/lecturer-login',lecturerFormData) 
-            .then((res)=>{
-            if(res.data.bool===true){
-                localStorage.setItem('lecturerLoginStatus','true');
-                window.location.href ='/lecturer-dashboard';
-            }
-            }
-         );
+    const submitForm = async (event) => {
+        event.preventDefault();
+        const lecturerFormData = new FormData();
+        lecturerFormData.append('email', lecturerLoginData.email);
+        lecturerFormData.append('password', lecturerLoginData.password);
 
-        }catch(error){
-            console.log(error);
+        try {
+            const response = await axios.post(baseUrl + '/lecturer-login', lecturerFormData);
+            if (response.data.bool === true) {
+                localStorage.setItem('lecturerLoginStatus', 'true');
+                localStorage.setItem('lecturerId', response.data.lecturer_id);
+                window.location.href = '/lecturer-dashboard';
+            } else {
+                alert('Invalid credentials!');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            alert('Something went wrong!');
         }
-        }
+    };
     
     const lecturerLoginStatus = localStorage.getItem('lecturerLoginStatus')
      if(lecturerLoginStatus === 'true'){
@@ -42,7 +44,9 @@ function LecturerLogin(){
 
     useEffect(()=>{
         document.title='Lecturer Login'
-    });
+        localStorage.removeItem('lecturerLoginStatus');
+        localStorage.removeItem('lecturerId');
+    },[]);
     return(
      <div className="container mt-4">
          <div className="row">

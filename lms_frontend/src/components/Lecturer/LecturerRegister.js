@@ -2,6 +2,7 @@
 import { useEffect,useState } from "react";
 import axios from "axios";
 
+
 const baseUrl="http://127.0.0.1:8000/api/lecturer/";
 
 function LecturerRegister(){
@@ -27,7 +28,8 @@ function LecturerRegister(){
     //End
 
     // Submit Form
-    const submitForm=()=>{
+    const submitForm=(event)=>{
+        event.preventDefault()
         const lectureFormrData = new FormData();
         lectureFormrData.append("full_name", lecturerData.full_name)
         lectureFormrData.append("email", lecturerData.email)
@@ -49,6 +51,8 @@ function LecturerRegister(){
         "address": "",
         "status": "success",
     });
+    localStorage.setItem('lecturerLoginStatus', 'true');
+            window.location.href='/lecturer-dashboard';
             });
         } 
         catch(error){
@@ -57,14 +61,17 @@ function LecturerRegister(){
         }
     };
     //End
-    useEffect(()=>{
-        document.title='Lecturer Register'
-    });
-
-    const lecturerLoginStatus = localStorage.getItem('lecturerLoginStatus')
-     if(lecturerLoginStatus === 'true'){
-        window.location.href='/lecturer-dashboard';
-     }
+    useEffect(() => {
+        document.title = 'Lecturer Register';
+        /*const lecturerLoginStatus = localStorage.getItem('lecturerLoginStatus');
+        if(lecturerLoginStatus === 'true') {
+            window.location.href = '/lecturer-dashboard';
+        }*/
+    }, []); 
+    //const lecturerLoginStatus = localStorage.getItem('lecturerLoginStatus')
+     //if(lecturerLoginStatus === 'true'){
+       // window.location.href='/lecturer-dashboard';
+     //}
     return(
      <div className="container mt-4">
          <div className="row">

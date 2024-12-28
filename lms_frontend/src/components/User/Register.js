@@ -11,7 +11,7 @@ function Register(){
                     <form>
                         <div className="mb-3">
                            <label for="exampleInputEmail1" className="form-label">Full Name</label>
-                               <input type="email" className="form-control"/>
+                               <input type="text" className="form-control"/>
                         </div>
                         <div className="mb-3">
                            <label for="exampleInputEmail1" className="form-label">Email</label>
@@ -19,7 +19,7 @@ function Register(){
                         </div>
                         <div className="mb-3">
                            <label for="exampleInputEmail1" className="form-label">Username</label>
-                               <input type="email" className="form-control"/>
+                               <input type="text" className="form-control"/>
                         </div>
                         <div className="mb-3">
                                <label for="exampleInputPassword1" className="form-label">Password</label>

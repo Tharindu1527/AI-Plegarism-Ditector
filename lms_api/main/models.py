@@ -30,6 +30,8 @@ class Course(models.Model):
     lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE)
     title = models.CharField(max_length=150) #if don't use max_length we can't access charfields
     description = models.TextField()
+    featured_img=models.ImageField(upload_to='course_imgs/',null=True)
+    techs= models.TextField(null=True)
 
     class Meta :
         verbose_name_plural = "3 . Course"
